@@ -1,0 +1,40 @@
+@use "screen_ratios" as *;
+
+.no-images {
+  text-align: center;
+  margin-top: 36px;
+}
+
+.images-container {
+  margin: 36px 16px;
+
+  .infinite-scroll-component {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+
+    & > img {
+      border-radius: 8px;
+    }
+  }
+}
+
+@media screen and (min-width: $tabletMinWidth) {
+  .images-container {
+    margin: 48px 48px;
+
+    .infinite-scroll-component {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+  }
+}
+
+@media screen and (min-width: $tabletMinWidth) {
+  .images-container .infinite-scroll-component {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}

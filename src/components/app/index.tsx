@@ -1,5 +1,6 @@
 import Header from "@components/header";
 import FilterSection from "@components/filter-section";
+import ImagesContainer from "@components/images-container";
 import { createContext, useState } from "react";
 
 export const SelectedBreedContext = createContext<{
@@ -20,7 +21,10 @@ const AppContainer = () => {
       value={{ value: selectedBreed, setValue: setSelectedBreed }}
     >
       <Header />
-      <FilterSection />
+      <main>
+        <FilterSection />
+        <ImagesContainer />
+      </main>
     </SelectedBreedContext.Provider>
   );
 };

@@ -1,15 +1,27 @@
 import Searcher from "@elements/searcher";
 import Select from "@elements/select";
 import Translations from "@assets/translations/en.json";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useContext,
+} from "react";
+import { SelectedBreedContext } from "@components/app";
 import { getDogList } from "./getDogList";
 import "./style.scss";
 
+const SELECTION_DELAY = 300;
+
 const FilterSection = () => {
+  const { setValue: setBreedInContext } = useContext(SelectedBreedContext);
   const [selectedBreed, setSelectedBreed] = useState(0);
   const [selectedSubBreed, setSelectedSubBreed] = useState(0);
   const [list, setList] = useState<DogList>({});
   const allBreedsList = useRef(list);
+  const timeoutRef = useRef<number>();
 
   const onInput = useCallback((value: string) => {
     const breedList = Object.keys(allBreedsList.current);
@@ -40,11 +52,18 @@ const FilterSection = () => {
   }, [selectedBreed]);
 
   useEffect(() => {
-    if (subBreedsList?.length > 0) {
-      console.log("TODO!!!", subBreedsList[selectedSubBreed]);
-    } else {
-      console.log("TODO!!!", arrayBreedsList[selectedBreed]);
-    }
+    window.clearTimeout(timeoutRef.current);
+    timeoutRef.current = window.setTimeout(() => {
+      if (subBreedsList?.length > 0) {
+        setBreedInContext(subBreedsList[selectedSubBreed]);
+      } else {
+        setBreedInContext(arrayBreedsList[selectedBreed]);
+      }
+    }, SELECTION_DELAY);
+
+    () => {
+      window.clearTimeout(timeoutRef.current);
+    };
   }, [selectedBreed, selectedSubBreed, subBreedsList, arrayBreedsList]);
 
   useEffect(() => {
