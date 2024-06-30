@@ -26,7 +26,7 @@ const Searcher = ({
 
     window.clearTimeout(updateTimeout.current);
     updateTimeout.current = window.setTimeout(() => {
-      onInput(value);
+      onInput(value.toLowerCase());
     }, TIME_UPDATE);
   };
 
