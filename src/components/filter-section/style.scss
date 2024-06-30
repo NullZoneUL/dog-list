@@ -2,11 +2,24 @@
 
 .filter-section-container {
   padding-top: 54px;
+
+  .filter-select-container {
+    margin: 25px 16px 0 16px;
+    text-align: center;
+
+    & > p {
+      color: var(--ds-message-color);
+    }
+  }
 }
 
 @media screen and (min-width: $tabletMinWidth) {
   .filter-section-container {
     padding-top: 70px;
+
+    .filter-select-container {
+      margin: 35px 48px 0 48px;
+    }
   }
 }
 

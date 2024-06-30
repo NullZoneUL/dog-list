@@ -1,11 +1,13 @@
 :root[data-color-mode="light"] {
   --ds-background: #f7f7f8;
-  --ds-header: white;
+  --ds-header: var(--ds-white);
   --ds-switch-background: #ccc;
   --ds-switch-background-checked: #2196f3;
-  --ds-switch-dot-background: white;
-  --ds-searcher-bottom: black;
-  --ds-searcher-placeholder: #aaaaaa;
+  --ds-switch-dot-background: var(--ds-white);
+  --ds-searcher-bottom: var(--ds-black);
+  --ds-select-background: var(--ds-white);
+  --ds-select-color: var(--ds-black);
+  --ds-message-color: var(--ds-black);
   --ds-separator: 0 1px 2px rgba(0, 0, 0, 0.13), 0 0px 2px rgba(0, 0, 0, 0.08);
 }
 
@@ -13,13 +15,19 @@
   --ds-background: #1f1f23;
   --ds-header: #18181b;
   --ds-switch-background: #474747;
-  --ds-switch-background-checked: black;
+  --ds-switch-background-checked: var(--ds-black);
   --ds-switch-dot-background: #a970ff;
-  --ds-searcher-bottom: white;
-  --ds-searcher-placeholder: #aaaaaa;
+  --ds-searcher-bottom: var(--ds-dark-white);
+  --ds-select-background: #292e36;
+  --ds-select-color: var(--ds-dark-white);
+  --ds-message-color: var(--ds-dark-white);
   --ds-separator: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0px 2px rgba(0, 0, 0, 0.9);
 }
 
 :root {
   --ds-searcher-color: var(--ds-searcher-bottom);
+  --ds-searcher-placeholder: #aaaaaa;
+  --ds-white: white;
+  --ds-dark-white: #c9d1d9;
+  --ds-black: black;
 }

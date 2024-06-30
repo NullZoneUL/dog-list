@@ -1,4 +1,5 @@
 {
   "results": "Results",
-  "search": "Search a breed..."
+  "search": "Search a breed...",
+  "no_results": "No breeds found"
 }
