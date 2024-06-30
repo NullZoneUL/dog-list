@@ -21,5 +21,10 @@ export default defineConfig({
     postcss: {
       plugins: [autoprefixer],
     },
+    preprocessorOptions: {
+      scss: {
+        includePaths: [path.resolve(__dirname, "src/assets/style")],
+      },
+    },
   },
 });
