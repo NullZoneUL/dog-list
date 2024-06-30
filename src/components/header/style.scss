@@ -1,36 +1,70 @@
 @use "screen_ratios" as *;
 
+html[data-color-mode="dark"] {
+  header {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0px 2px rgba(0, 0, 0, 0.9);
+
+    & > img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+$padding: 7px;
+
 header {
   background-color: var(--ds-header);
   width: 100%;
   position: fixed;
   top: 0;
-  padding: 7px;
+  padding: $padding;
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.13),
     0 0px 2px rgba(0, 0, 0, 0.08);
 
   & > img {
     width: 40px;
+    display: block;
+  }
+
+  .header-right-position {
+    position: absolute;
+    right: $padding;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
 @media screen and (min-width: $tabletMinWidth) {
+  $padding: 10px;
+
   header {
-    padding: 10px;
+    padding: $padding;
 
     & > img {
       width: 50px;
+    }
+
+    .header-right-position {
+      right: $padding;
     }
   }
 }
 
 @media screen and (min-width: $computerMinWidth) {
+  $padding: 15px;
+
   header {
-    padding: 15px;
+    padding: $padding;
 
     & > img {
       width: 55px;
+    }
+
+    .header-right-position {
+      right: $padding;
     }
   }
 }

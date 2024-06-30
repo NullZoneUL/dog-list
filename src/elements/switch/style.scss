@@ -1,0 +1,92 @@
+@use "screen_ratios" as *;
+
+html[data-color-mode="dark"] {
+  .switch {
+    & > input:not(:checked) + .switch-slider:before {
+      background-color: var(--ds-switch-background-checked);
+    }
+
+    & > input:checked + .switch-slider {
+      outline: 1px solid var(--ds-switch-dot-background);
+    }
+  }
+}
+
+$height: 25px;
+$dotSize: $height - 8px;
+$dotPosition: 4px;
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: $height;
+
+  & > input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--ds-switch-background);
+    transition: 0.2s;
+    border-radius: $height;
+
+    &::before {
+      position: absolute;
+      content: "";
+      height: $dotSize;
+      width: $dotSize;
+      left: $dotPosition;
+      bottom: $dotPosition;
+      background-color: var(--ds-switch-dot-background);
+      transition: 0.2s;
+      border-radius: 50%;
+    }
+  }
+
+  & > input:checked + .switch-slider {
+    background-color: var(--ds-switch-background-checked);
+  }
+
+  & > input:focus + .switch-slider {
+    box-shadow: 0 0 1px var(--ds-switch-background-checked);
+  }
+
+  & > input:checked + .switch-slider:before {
+    transform: translateX(26px);
+  }
+}
+
+@media screen and (min-width: $computerMinWidth) {
+  $height: 34px;
+  $dotSize: $height - 8px;
+  $dotPosition: 4px;
+
+  .switch {
+    width: 60px;
+    height: $height;
+
+    .switch-slider {
+      border-radius: $height;
+
+      &::before {
+        height: $dotSize;
+        width: $dotSize;
+        left: $dotPosition;
+        bottom: $dotPosition;
+      }
+    }
+
+    & > input:checked + .switch-slider:before {
+      transform: translateX(26px);
+    }
+  }
+}
