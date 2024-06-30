@@ -56,10 +56,12 @@ const FilterSection = () => {
   useEffect(() => {
     window.clearTimeout(timeoutRef.current);
     timeoutRef.current = window.setTimeout(() => {
+      const breed = arrayBreedsList[selectedBreed];
+
       if (subBreedsList?.length > 0) {
-        setBreedInContext(subBreedsList[selectedSubBreed]);
+        setBreedInContext(`${breed}/${subBreedsList[selectedSubBreed]}`);
       } else {
-        setBreedInContext(arrayBreedsList[selectedBreed]);
+        setBreedInContext(breed);
       }
     }, SELECTION_DELAY);
 
