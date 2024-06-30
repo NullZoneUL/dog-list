@@ -1,22 +1,15 @@
 import Header from "@components/header";
-import { createContext, useEffect, useState } from "react";
-import { getDogList } from "./getDogList";
+import FilterSection from "@components/filter-section";
+import { createContext } from "react";
 
-export const DogListContext = createContext<DogList>({});
+export const SelectedBreedContext = createContext<string>("");
 
 const AppContainer = () => {
-  const [list, setList] = useState<DogList>({});
-
-  useEffect(() => {
-    getDogList()
-      .then((data: DogList) => setList(data))
-      .catch((error) => console.log("TODO!!!", error));
-  }, []);
-
   return (
-    <DogListContext.Provider value={list}>
+    <SelectedBreedContext.Provider value={""}>
       <Header />
-    </DogListContext.Provider>
+      <FilterSection />
+    </SelectedBreedContext.Provider>
   );
 };
 

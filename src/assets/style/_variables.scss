@@ -4,6 +4,9 @@
   --ds-switch-background: #ccc;
   --ds-switch-background-checked: #2196f3;
   --ds-switch-dot-background: white;
+  --ds-searcher-bottom: black;
+  --ds-searcher-placeholder: #aaaaaa;
+  --ds-separator: 0 1px 2px rgba(0, 0, 0, 0.13), 0 0px 2px rgba(0, 0, 0, 0.08);
 }
 
 :root[data-color-mode="dark"] {
@@ -12,4 +15,11 @@
   --ds-switch-background: #474747;
   --ds-switch-background-checked: black;
   --ds-switch-dot-background: #a970ff;
+  --ds-searcher-bottom: white;
+  --ds-searcher-placeholder: #aaaaaa;
+  --ds-separator: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0px 2px rgba(0, 0, 0, 0.9);
+}
+
+:root {
+  --ds-searcher-color: var(--ds-searcher-bottom);
 }

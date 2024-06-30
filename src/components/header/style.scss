@@ -1,14 +1,8 @@
 @use "screen_ratios" as *;
 
 html[data-color-mode="dark"] {
-  header {
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.9),
-      0 0px 2px rgba(0, 0, 0, 0.9);
-
-    & > img {
-      filter: brightness(0) invert(1);
-    }
+  header > img {
+    filter: brightness(0) invert(1);
   }
 }
 
@@ -20,9 +14,7 @@ header {
   position: fixed;
   top: 0;
   padding: $padding;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.13),
-    0 0px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--ds-separator);
 
   & > img {
     width: 40px;

@@ -1,0 +1,17 @@
+@use "screen_ratios" as *;
+
+.filter-section-container {
+  padding-top: 54px;
+}
+
+@media screen and (min-width: $tabletMinWidth) {
+  .filter-section-container {
+    padding-top: 70px;
+  }
+}
+
+@media screen and (min-width: $computerMinWidth) {
+  .filter-section-container {
+    padding-top: 85px;
+  }
+}
