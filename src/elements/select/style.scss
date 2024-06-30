@@ -1,0 +1,25 @@
+@use "font_sizes" as *;
+@use "screen_ratios" as *;
+
+.ds-select {
+  padding: 4px;
+  outline: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  margin: 0 10px 10px 10px;
+  width: 155px;
+  font-size: $font-size-s;
+  border-radius: 5px;
+  background-color: var(--ds-select-background);
+  border-color: var(--ds-select-background);
+  color: var(--ds-select-color);
+  box-shadow: var(--ds-separator);
+}
+
+@media screen and (min-width: $computerMinWidth) {
+  .ds-select {
+    padding: 6px;
+    font-size: $font-size-m;
+    width: 220px;
+  }
+}
