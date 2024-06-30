@@ -1,4 +1,15 @@
-:root {
+:root[data-color-mode="light"] {
   --ds-background: #f7f7f8;
   --ds-header: white;
+  --ds-switch-background: #ccc;
+  --ds-switch-background-checked: #2196f3;
+  --ds-switch-dot-background: white;
+}
+
+:root[data-color-mode="dark"] {
+  --ds-background: #1f1f23;
+  --ds-header: #18181b;
+  --ds-switch-background: #474747;
+  --ds-switch-background-checked: black;
+  --ds-switch-dot-background: #a970ff;
 }
