@@ -5,3 +5,9 @@ export enum RequestServices {
   images_1 = "breed/",
   images_2 = "/images",
 }
+
+export const enum RequestStates {
+  "LOADING",
+  "SUCCESS",
+  "ERROR",
+}

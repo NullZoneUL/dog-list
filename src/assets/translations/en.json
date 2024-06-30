@@ -3,5 +3,6 @@
   "search": "Search a breed...",
   "loading": "Loading...",
   "no_results": "No breeds found",
-  "no_images": "No images available"
+  "no_images": "No images available",
+  "api_error": "Unable to connect to the server"
 }

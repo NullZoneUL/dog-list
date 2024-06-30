@@ -3,20 +3,15 @@ import Translations from "@assets/translations/en.json";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { SelectedBreedContext } from "@components/app";
 import { getImages } from "./getImages";
+import { RequestStates } from "@utils/requests";
 import "./style.scss";
 
 const IMAGES_BY_SECTION = 10;
 
-const enum REQUEST_STATUS {
-  "LOADING",
-  "SUCCESS",
-  "ERROR",
-}
-
 const ImagesContainer = () => {
   const { value: selectedBreed } = useContext(SelectedBreedContext);
   const [visibleImages, setVisibleImages] = useState<Array<string>>([]);
-  const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING);
+  const [requestStatus, setRequestStatus] = useState(RequestStates.LOADING);
   const allImagesList = useRef(visibleImages);
   const currentPosition = useRef(0);
 
@@ -33,23 +28,23 @@ const ImagesContainer = () => {
     allImagesList.current = [];
     currentPosition.current = 0;
     setVisibleImages([]);
-    setRequestStatus(REQUEST_STATUS.LOADING);
+    setRequestStatus(RequestStates.LOADING);
 
     selectedBreed &&
       getImages(selectedBreed)
         .then((resp: Array<string>) => {
           allImagesList.current = resp;
           addImages();
-          setRequestStatus(REQUEST_STATUS.SUCCESS);
+          setRequestStatus(RequestStates.SUCCESS);
         })
         .catch(() => {
-          setRequestStatus(REQUEST_STATUS.ERROR);
+          setRequestStatus(RequestStates.ERROR);
         });
   }, [selectedBreed]);
 
   if (
-    requestStatus === REQUEST_STATUS.ERROR ||
-    (requestStatus === REQUEST_STATUS.SUCCESS &&
+    requestStatus === RequestStates.ERROR ||
+    (requestStatus === RequestStates.SUCCESS &&
       allImagesList.current.length === 0)
   ) {
     return <h1 className="no-images">{Translations.no_images}</h1>;
