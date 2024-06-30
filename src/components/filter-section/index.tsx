@@ -11,6 +11,7 @@ import {
 } from "react";
 import { SelectedBreedContext } from "@components/app";
 import { getDogList } from "./getDogList";
+import { RequestStates } from "@utils/requests";
 import "./style.scss";
 
 const SELECTION_DELAY = 300;
@@ -19,6 +20,7 @@ const FilterSection = () => {
   const { setValue: setBreedInContext } = useContext(SelectedBreedContext);
   const [selectedBreed, setSelectedBreed] = useState(0);
   const [selectedSubBreed, setSelectedSubBreed] = useState(0);
+  const [requestStatus, setRequestStatus] = useState(RequestStates.LOADING);
   const [list, setList] = useState<DogList>({});
   const allBreedsList = useRef(list);
   const timeoutRef = useRef<number>();
@@ -67,13 +69,20 @@ const FilterSection = () => {
   }, [selectedBreed, selectedSubBreed, subBreedsList, arrayBreedsList]);
 
   useEffect(() => {
+    setRequestStatus(RequestStates.LOADING);
+
     getDogList()
       .then((data: DogList) => {
         allBreedsList.current = data;
         setList(data);
+        setRequestStatus(RequestStates.SUCCESS);
       })
-      .catch((error) => console.log("TODO!!!", error));
+      .catch(() => setRequestStatus(RequestStates.ERROR));
   }, []);
+
+  if (requestStatus === RequestStates.ERROR) {
+    return <h1>{Translations.api_error}</h1>;
+  }
 
   return (
     <div className="filter-section-container">
@@ -95,7 +104,11 @@ const FilterSection = () => {
             )}
           </>
         ) : (
-          <p>{Translations.no_results}</p>
+          <>
+            {requestStatus === RequestStates.SUCCESS && (
+              <h1>{Translations.no_results}</h1>
+            )}
+          </>
         )}
       </div>
     </div>
