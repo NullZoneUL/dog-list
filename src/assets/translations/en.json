@@ -1,5 +1,7 @@
 {
   "results": "Results",
   "search": "Search a breed...",
-  "no_results": "No breeds found"
+  "loading": "Loading...",
+  "no_results": "No breeds found",
+  "no_images": "No images available"
 }
