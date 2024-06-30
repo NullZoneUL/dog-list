@@ -1,3 +1,4 @@
+import Header from "@components/header";
 import { createContext, useEffect, useState } from "react";
 import { getDogList } from "./getDogList";
 
@@ -14,7 +15,7 @@ const AppContainer = () => {
 
   return (
     <DogListContext.Provider value={list}>
-      <></>
+      <Header />
     </DogListContext.Provider>
   );
 };
