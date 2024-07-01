@@ -1,6 +1,6 @@
 import SearchIcon from "@assets/images/search.svg";
 import Translations from "@assets/translations/en.json";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./style.scss";
 
 interface SearcherProps {
@@ -20,15 +20,18 @@ const Searcher = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const updateTimeout = useRef<number>();
 
-  const onInput_ = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setInputValue(value);
+  const onInput_ = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+      setInputValue(value);
 
-    window.clearTimeout(updateTimeout.current);
-    updateTimeout.current = window.setTimeout(() => {
-      onInput(value.toLowerCase());
-    }, TIME_UPDATE);
-  };
+      window.clearTimeout(updateTimeout.current);
+      updateTimeout.current = window.setTimeout(() => {
+        onInput(value.toLowerCase());
+      }, TIME_UPDATE);
+    },
+    [onInput],
+  );
 
   useEffect(() => {
     return () => {
