@@ -8,6 +8,7 @@ pnpm version: **8.15.6**
 <br>
 
 ## **--- Initialize ---**
+Execute both commands.
 
 **-> pnpm i**
 <br>
