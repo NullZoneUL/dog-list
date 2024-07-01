@@ -60,7 +60,11 @@ const ImagesContainer = () => {
           hasMore={allImagesList.current.length > visibleImages.length}
         >
           {visibleImages?.map((item, index) => (
-            <img src={item} key={`DS_IMAGE_${index}`} />
+            <img
+              src={item}
+              key={`DS_IMAGE_${index}`}
+              alt={`DS_IMAGE_${index}`}
+            />
           ))}
         </InfiniteScroll>
       )}

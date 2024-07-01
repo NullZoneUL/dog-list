@@ -17,6 +17,7 @@ const Select = ({ id, items, onChange }: SelectProps) => {
 
   return (
     <select
+      data-testid={id}
       onChange={(event) => onChange(event.target.selectedIndex)}
       className="ds-select"
       ref={selectRef}
